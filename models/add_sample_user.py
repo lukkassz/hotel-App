@@ -1,12 +1,12 @@
-from database import Session, User, init_db
+# add_sample_user.py
+from models.database import Session, User, init_db
 
-
-# Initialize the database (creates tables if they do not exist)
+# Initialize the database
 init_db()
 
 session = Session()
 
-# Check if the user already exists to avoid duplicates
+# Check if sample user exists
 existing_user = session.query(User).filter_by(username="admin").first()
 if not existing_user:
     sample_user = User(username="admin", password="admin123", role="manager")
